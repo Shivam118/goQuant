@@ -5,10 +5,12 @@ import {
   CartesianGrid,
   Bar,
   BarChart,
+  ResponsiveContainer,
 } from "recharts";
 
 export default function LiveBarChart({ data }) {
   return (
+    <ResponsiveContainer width="100%" height="100%">
       <BarChart
         width={500}
         height={300}
@@ -30,5 +32,6 @@ export default function LiveBarChart({ data }) {
         <YAxis />
         <Bar dataKey="spread" fill="#f00" />
       </BarChart>
+    </ResponsiveContainer>
   );
 }

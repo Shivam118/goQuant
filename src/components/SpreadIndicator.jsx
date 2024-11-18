@@ -21,7 +21,12 @@ const SpreadIndicator = () => {
     }
   }, [orderBook]);
 
-  return <LiveBarChart data={spreadData} />;
+  return (
+    <div className="bg-[#222] rounded-xl w-full shadow-md mx-auto m-5 h-[250px] md:h-[400px] col-span-2 lg:col-span-1 p-2">
+      <h2 className="text-center text-[#ccc]">Spread</h2>
+      <LiveBarChart data={spreadData} />
+    </div>
+  );
 };
 
 export default SpreadIndicator;

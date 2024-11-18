@@ -1,7 +1,4 @@
-import { SymbolContext } from "@/context/SymbolContext";
-import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
-import { apiUrl, apiKey } from "@/utils/env";
+import React, { useEffect, useState } from "react";
 import LiveLineChart from "./LineChart";
 import GetOrderBook from "@/utils/orderBook";
 
@@ -35,7 +32,7 @@ const MarketDepth = () => {
   }, [orderBook]);
 
   return (
-    <div>
+    <div className="bg-[#222] rounded-xl w-full shadow-md mx-auto m-5 min-h-[400px] col-span-2 p-2 h-[200px] md:h-[300px]">
       <LiveLineChart data={data} />
     </div>
   );

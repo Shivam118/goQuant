@@ -4,21 +4,21 @@ import GetOrderBook from "@/utils/orderBook";
 
 const BidAndAsk = () => {
   const data = GetOrderBook();
-
   return (
-    <div className="border border-[#ccc] rounded-sm max-w-[600px] shadow-md mx-auto m-5">
-      <div className="flex justify-between bg-[#f0f0f0] items-center">
+    <div className="bg-[#222] rounded-xl w-full shadow-md mx-auto m-5 min-h-[400px] col-span-2 lg:col-span-1">
+      <div className="flex justify-between text-[#ccc] text-base md:text-lg items-center">
         <div className="w-1/2 text-center">Bids</div>
         <div className="w-1/2 text-center">Asks</div>
       </div>
-      <div className="flex">
+      <br/>
+      <div className="flex p-2 text-xs md:text-base">
         <div className="w-1/2 text-red-700">
           {data &&
             data.bids.map((bid, idx) => (
               <div
                 key={idx}
                 className={`flex justify-between px-2 py-1 ${
-                  idx % 2 === 0 ? "bg-[#f0f0f0]" : ""
+                  idx % 2 === 0 ? "bg-[#333]" : ""
                 }`}
               >
                 <div>{bid.price}</div>
@@ -32,7 +32,7 @@ const BidAndAsk = () => {
               <div
                 key={idx}
                 className={`flex justify-between px-2 py-1 ${
-                  idx % 2 === 0 ? "bg-[#f0f0f0]" : ""
+                  idx % 2 === 0 ? "bg-[#333]" : ""
                 }`}
               >
                 <div>{ask.price}</div>

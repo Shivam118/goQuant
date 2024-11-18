@@ -8,15 +8,13 @@ const ImbalanceIndicator = () => {
   const calculateOrderbookImbalance = (bids, asks) => {
     const totalBidsVolume = bids.reduce((sum, bid) => sum + bid.size, 0);
     const totalAsksVolume = asks.reduce((sum, ask) => sum + ask.size, 0);
-
     const imbalance =
       (totalBidsVolume - totalAsksVolume) / (totalBidsVolume + totalAsksVolume);
-
     return imbalance.toFixed(2);
   };
 
   useEffect(() => {
-    if (orderBook) {      
+    if (orderBook) {
       const { bids, asks } = orderBook;
       const calculatedImbalance = calculateOrderbookImbalance(bids, asks);
       setImbalance(calculatedImbalance);
@@ -24,8 +22,10 @@ const ImbalanceIndicator = () => {
   }, [orderBook]);
 
   return (
-    <div style={{ textAlign: "center", margin: "20px 0" }}>
-      <h3>Orderbook Imbalance Indicator</h3>
+    <div className="bg-[#222] rounded-xl w-full shadow-md mx-auto col-span-2 p-2">
+      <h3 className="text-center text-white text-lg pb-2">
+        Imbalance
+      </h3>
       <div
         style={{
           display: "flex",
@@ -39,7 +39,6 @@ const ImbalanceIndicator = () => {
           overflow: "hidden",
         }}
       >
-        {/* Bar for bids */}
         <div
           style={{
             flex: imbalance > 0 ? imbalance : 0,
@@ -48,7 +47,6 @@ const ImbalanceIndicator = () => {
             transition: "flex 0.5s ease",
           }}
         ></div>
-        {/* Bar for asks */}
         <div
           style={{
             flex: imbalance < 0 ? -imbalance : 0,
@@ -58,13 +56,13 @@ const ImbalanceIndicator = () => {
           }}
         ></div>
       </div>
-      <p>
+      <h6 className="text-center text-[#ddd] py-2">
         {imbalance > 0
           ? `Buyers dominate (${imbalance * 100}%)`
           : imbalance < 0
-          ? `Sellers dominate (${Math.abs(imbalance * 100)}%)`
+          ? `Sellers dominate (${Math.abs(imbalance * 100)?.toFixed(2)}%)`
           : "Perfectly balanced"}
-      </p>
+      </h6>
     </div>
   );
 };

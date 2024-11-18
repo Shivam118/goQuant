@@ -25,12 +25,13 @@ export default function GetOrderBook() {
   };
 
   useEffect(() => {
+    fetchOrderBook();
     const interval = setInterval(async () => {
       const orderBook = await fetchOrderBook();
       setData(orderBook);
     }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [symbolId]);
 
   return data;
 }
